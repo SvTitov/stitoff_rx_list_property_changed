@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="stitoff_rx_list.MainPage">
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label IsVisible="{Binding IsAnySelected}" Text="Something's selected" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" />
+        </Frame>
+        <ListView HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  ItemsSource="{Binding List}"
+                  HasUnevenRows="True"
+                  SelectionMode="None"
+                  CachingStrategy="RecycleElementAndDataTemplate"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame HeightRequest="50" Margin="20,10,20,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox
+                                    Grid.Column="0"
+                                    IsChecked="{Binding IsSelected}"/>
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{Binding Title, Mode=TwoWay}"
+                                    VerticalOptions="Center"/>
+                             
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
